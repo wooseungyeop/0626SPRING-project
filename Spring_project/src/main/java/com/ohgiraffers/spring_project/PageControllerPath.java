@@ -14,7 +14,7 @@ public class PageControllerPath {
                 String pageNumber = parts[2];
                 return "redirect:/seungYeopPage" + pageNumber;
             }
-            return "redirect:/seungYeopPage1";
+            return "redirect:/seungYeopPage";
         }
 
         if (title.startsWith("다영님 페이지")) {
