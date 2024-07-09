@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화 목록</title>
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/font.css}">
+    <link rel="stylesheet" th:href="@{/css/subPageAll.css}">
+    <link rel="stylesheet" th:href="@{/css/SeungYeop/seungyeop.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:src="@{/js/SeungYeop/SeungYeop.js}"></script>
+</head>
+<body class="bodyBack_Lee">
+<div th:replace="~{header/header :: header}"></div>
+<section class="section_Lee">
+    <div class="W100_Lee">
+        <div class="W100_Lee">
+            <div>
+                <p class="section_subTitle_header_Lee">영화 목록</p>
+            </div>
+            <div class="section_subTitle_Lee">
+                <p>애니 오타쿠의 영화공유 & 리뷰</p>
+            </div>
+            <div class="section_Data_box_Lee Df_JB DF_AC">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>내용</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <div th:each="movie : ${movies}">
+
+
+                    <div id="Accordion_wrap">
+                        <div class="que">
+                            <span th:text="${AccordionTitle}"> </span>
+                        </div>
+                        <div class="anw">
+                            <label for="anw">내용</label>
+                            <textarea type="text" id="anw" name="anw"></textarea>
+                            <pre th:text="${movie.anw}"></pre>
+                        </div>
+                    </div>
+                    </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

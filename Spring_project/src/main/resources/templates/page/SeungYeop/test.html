@@ -16,7 +16,9 @@
 <body class="bodyBack_Lee">
 <div th:replace="~{header/header :: header}"></div>
 
+
 <section class="section_Lee">
+    <form th:action="@{/page/SeungYeop/test}" method="post">
     <div class="W100_Lee">
         <div class="W100_Lee">
             <div>
@@ -92,17 +94,16 @@
                             <span th:text="${AccordionTitle}"> </span>
                         </div>
                         <div class="anw">
-                            <div th:each="movie : ${movies}">
-                                <div th:text="${movie.anw}"></div>
-                            </div>
+                            <label for="anw">내용</label>
+                            <textarea type="text" id="anw" name="anw"></textarea>
+                            <pre th:text="${anw}"></pre>
+                            <input th:href="@{page/SeungYeop/movielist}" type="submit" role="button" value="등록하기" />
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-        <a th:href="@{/page/SeungYeop/test}" role="button">
-        글쓰기
-        </a>
+    </form>
 </section>
 
 </body>
