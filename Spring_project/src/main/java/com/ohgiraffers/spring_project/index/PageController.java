@@ -1,24 +1,12 @@
-package com.ohgiraffers.spring_project;
+package com.ohgiraffers.spring_project.index;
 
 
-import com.ohgiraffers.spring_project.dto.MovieDTO;
-import com.ohgiraffers.spring_project.model.entity.MovieEntity;
-import com.ohgiraffers.spring_project.service.MovieService;
-import org.apache.coyote.Response;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class PageController {
+
 
 //    @Autowired
 //    private MovieService movieService;

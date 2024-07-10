@@ -17,13 +17,23 @@ import java.util.List;
 @Controller
 public class MovieController {
 
+
+    private final MovieService movieService;
+
     @Autowired
-    private MovieService movieService;
+    public MovieController(MovieService movieService) {
+        this.movieService = movieService;
+    }
 
     @GetMapping("/seungYeopPage")
-    public String SeungYeop() {
+    public String SeungYeop(Model model) {
+
+        List<MovieDTO> movieDTOList = movieService.getAllMovies();
+        model.addAttribute("movieDTOList", movieDTOList);
         return "page/SeungYeop/SeungYeop";
     }
+
+
 
     @GetMapping("page/SeungYeop/test")
     public String test() {
@@ -39,28 +49,13 @@ public class MovieController {
         return "redirect:/seungYeopPage";
     }
 
-    @PostMapping("/movielist")
-    public String getAllMovies(Model model) {
-        List<MovieEntity> movieList = movieService.getAllMovies();
-        model.addAttribute("movieList", movieList);
-        return "page/SeungYeop/movielist";
-    }
+//    @PostMapping("/movielist")
+//    public String getAllMovies(Model model) {
+//        List<MovieEntity> movieList = movieService.getAllMovies();
+//        model.addAttribute("movieList", movieList);
+//        return "page/SeungYeop/movielist";
+//    }
 
 
-    @PostMapping
-    public ModelAndView postMovie(MovieDTO movieDTO, ModelAndView mv){
-        if(movieDTO.getAnw() == null || movieDTO.getAnw().equals("")){
-            mv.setViewName("redirect:/seungYeopPage");
-        }
-        int result = movieService.postMovie(movieDTO);
-
-        if (result <= 0){
-            mv.setViewName("error");
-        }else{
-            mv.setViewName("redirect:/seungYeopPage");
-        }
-        return mv;
-
-    }
 
 }

@@ -7,11 +7,12 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class MovieService {
-    private MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
 
 
     @Autowired
@@ -26,24 +27,19 @@ public class MovieService {
         return saveMovied.getId();
     }
 
-    public List<MovieEntity> getAllMovies() {
-        return movieRepository.findAll();
-    }
+    public List<MovieDTO> getAllMovies() {
 
-    @Transactional
-    public int postMovie(MovieDTO movieDTO) {
         List<MovieEntity> movieEntities = movieRepository.findAll();
+        List<MovieDTO> movieDTOList = new ArrayList<>();
         for (MovieEntity movieEntity : movieEntities) {
-            if (movieEntity.getAnw().equals(movieDTO.getAnw())) {
-                return 0;
-            }
+            MovieDTO movieDTO = new MovieDTO(
+                    movieEntity.getAnw()
+            );
+            movieDTOList.add(movieDTO);
         }
-
-        MovieEntity movieEntity = new MovieEntity();
-
-        MovieEntity result = movieRepository.save(movieDTO.toEntity());
-        return result != null ? 1 : 0;
+        return movieDTOList;
     }
+
 
 
 

@@ -4,7 +4,7 @@ package com.ohgiraffers.spring_project.model.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "movie")
+@Table(name = "sy_movie")
 public class MovieEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

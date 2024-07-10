@@ -92,7 +92,7 @@
                             <span th:text="${AccordionTitle}"> </span>
                         </div>
                         <div class="anw">
-                            <div th:each="movie : ${movies}">
+                            <div th:each="movie : ${movieDTOList}">
                                 <div th:text="${movie.anw}"></div>
                             </div>
                         </div>
