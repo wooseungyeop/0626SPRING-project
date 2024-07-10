@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,11 +50,19 @@ public class MovieController {
         return "redirect:/seungYeopPage";
     }
 
-//    @PostMapping("/movielist")
-//    public String getAllMovies(Model model) {
-//        List<MovieEntity> movieList = movieService.getAllMovies();
-//        model.addAttribute("movieList", movieList);
-//        return "page/SeungYeop/movielist";
+
+//    @GetMapping("/post/{id}")
+//    public String detail(@PathVariable("id") Long id, Model model) {
+//        MovieDTO movieDTO = movieService.getPost(id);
+//        model.addAttribute("post", movieDTO);
+//        return "page/SeungYeop/SeungYeop";
+//    }
+//
+//    @GetMapping("/post/SeungYeop/{id}")
+//    public String edit(@PathVariable("id") Long id, Model model) {
+//        MovieDTO movieDTO = movieService.getPost(id);
+//        model.addAttribute("post", movieDTO);
+//        return "page/SeungYeop/SeungYeop";
 //    }
 
 

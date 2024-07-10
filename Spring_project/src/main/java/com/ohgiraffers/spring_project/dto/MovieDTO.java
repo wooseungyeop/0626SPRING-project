@@ -6,7 +6,7 @@ import com.ohgiraffers.spring_project.model.entity.MovieEntity;
 
 public class MovieDTO {
 
-
+    private Long id;
     private String anw;
 
 
@@ -17,6 +17,19 @@ public class MovieDTO {
     public MovieDTO(String anw) {
 
         this.anw = anw;
+    }
+
+    public MovieDTO(Long id, String anw) {
+        this.id = id;
+        this.anw = anw;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getAnw() {

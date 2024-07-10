@@ -17,6 +17,7 @@
 <div th:replace="~{header/header :: header}"></div>
 
 <section class="section_Lee">
+    <form th:action="@{'/post/SeungYeop/'}" method="post">
     <div class="W100_Lee">
         <div class="W100_Lee">
             <div>
@@ -100,9 +101,9 @@
             </div>
         </div>
     </div>
-        <a th:href="@{/page/SeungYeop/test}" role="button">
-        글쓰기
-        </a>
+        <a th:href="@{/page/SeungYeop/test}" role="button"> 수정 </a>
+        <a th:href="@{/page/SeungYeop/test}" role="button"> 글쓰기 </a>
+    </form>
 </section>
 
 </body>

@@ -40,6 +40,16 @@ public class MovieService {
         return movieDTOList;
     }
 
+    @Transactional
+    public MovieDTO getPost(Long id) {
+        MovieEntity movieEntity = movieRepository.findById(id).get();
+
+        MovieDTO movieDTO = new MovieDTO(
+                movieEntity.getAnw()
+        );
+        return movieDTO;
+    }
+
 
 
 
