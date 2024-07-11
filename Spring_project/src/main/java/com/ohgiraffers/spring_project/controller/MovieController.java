@@ -7,10 +7,7 @@ import com.ohgiraffers.spring_project.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -29,14 +26,14 @@ public class MovieController {
     @GetMapping("/seungYeopPage")
     public String SeungYeop(Model model) {
 
-        List<MovieDTO> movieDTOList = movieService.getAllMovies();
-        model.addAttribute("movieDTOList", movieDTOList);
+        List<MovieDTO> movieDTO = movieService.getAllMovies();
+        model.addAttribute("movieDTO", movieDTO);
         return "page/SeungYeop/SeungYeop";
     }
 
 
 
-    @GetMapping("page/SeungYeop/test")
+    @GetMapping("/page/SeungYeop/test")
     public String test() {
         return "page/SeungYeop/test";
     }
@@ -51,20 +48,22 @@ public class MovieController {
     }
 
 
-//    @GetMapping("/post/{id}")
-//    public String detail(@PathVariable("id") Long id, Model model) {
-//        MovieDTO movieDTO = movieService.getPost(id);
-//        model.addAttribute("post", movieDTO);
-//        return "page/SeungYeop/SeungYeop";
-//    }
-//
-//    @GetMapping("/post/SeungYeop/{id}")
-//    public String edit(@PathVariable("id") Long id, Model model) {
-//        MovieDTO movieDTO = movieService.getPost(id);
-//        model.addAttribute("post", movieDTO);
-//        return "page/SeungYeop/SeungYeop";
-//    }
+    @GetMapping("/page/SeungYeop/edit/{id}")
+    public String getMovie(@PathVariable("id") Long id, Model model) {
+        MovieDTO movieDTO = movieService.getMovie(id);
+        movieDTO.setId(id);
+            model.addAttribute("movie", movieDTO); // 모델에 post 객체 추가
+        return "page/SeungYeop/SeungYeop";
+    }
 
+
+
+
+    @PutMapping("/page/SeungYeop/edit/{id}")
+    public String updateMovie(MovieDTO movieDTO){
+        movieService.saveMovie(movieDTO);
+        return "redirect:/";
+    }
 
 
 }

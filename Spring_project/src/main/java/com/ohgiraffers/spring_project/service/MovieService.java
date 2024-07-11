@@ -33,6 +33,7 @@ public class MovieService {
         List<MovieDTO> movieDTOList = new ArrayList<>();
         for (MovieEntity movieEntity : movieEntities) {
             MovieDTO movieDTO = new MovieDTO(
+                    movieEntity.getId(),
                     movieEntity.getAnw()
             );
             movieDTOList.add(movieDTO);
@@ -41,10 +42,11 @@ public class MovieService {
     }
 
     @Transactional
-    public MovieDTO getPost(Long id) {
+    public MovieDTO getMovie(Long id) {
         MovieEntity movieEntity = movieRepository.findById(id).get();
 
         MovieDTO movieDTO = new MovieDTO(
+                movieEntity.getId(),
                 movieEntity.getAnw()
         );
         return movieDTO;

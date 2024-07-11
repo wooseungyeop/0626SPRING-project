@@ -14,10 +14,6 @@ public class MovieDTO {
     public MovieDTO() {
     }
 
-    public MovieDTO(String anw) {
-
-        this.anw = anw;
-    }
 
     public MovieDTO(Long id, String anw) {
         this.id = id;
@@ -43,12 +39,13 @@ public class MovieDTO {
     @Override
     public String toString() {
         return "MovieDTO{" +
+                "id=" + id +
                 ", anw='" + anw + '\'' +
                 '}';
     }
 
     public MovieEntity toEntity() {
-        return new MovieEntity(this.anw);
+        return new MovieEntity(this.id, this.anw);
     }
 
 

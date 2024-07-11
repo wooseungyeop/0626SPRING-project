@@ -93,15 +93,18 @@
                             <span th:text="${AccordionTitle}"> </span>
                         </div>
                         <div class="anw">
-                            <div th:each="movie : ${movieDTOList}">
+                            <div th:each="movie : ${movieDTO}">
+                                <h1 th:text="'Editing Post ID: ' + ${movie.id}"></h1>
                                 <div th:text="${movie.anw}"></div>
+                                <a th:href="@{'/page/SeungYeop/edit/' + ${movie.id} }" role="button"> 수정하기 </a>
+
                             </div>
                         </div>
                 </div>
             </div>
         </div>
     </div>
-        <a th:href="@{/page/SeungYeop/test}" role="button"> 수정 </a>
+
         <a th:href="@{/page/SeungYeop/test}" role="button"> 글쓰기 </a>
     </form>
 </section>
